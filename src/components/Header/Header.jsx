@@ -6,11 +6,11 @@ import logo from '../../images/Logo.svg';
 const Header = () => {
   return (
     <header className='header'>
-      <nav className='row'>
-        <div className="col-md-6 logo">
+      <nav className='grid grid-cols__2'>
+        <div className="logo">
           <img src={logo} alt="" />
         </div>
-        <div className="col-md-6 menu">
+        <div className="menu">
           <ul>
             <li><a href="/order">Order</a></li>
             <li><a href="/review">Order Review</a></li>
