@@ -6,7 +6,7 @@ import logo from '../../images/Logo.svg';
 const Header = () => {
   return (
     <header className='header'>
-      <nav className='grid grid-cols__2'>
+      <nav className='grid grid-cols__2 align-center'>
         <div className="logo">
           <img src={logo} alt="" />
         </div>
