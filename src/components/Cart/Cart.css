@@ -1,0 +1,9 @@
+.cart {
+	position: sticky;
+	top: 90px;
+}
+
+.cart p {
+	font-size: 18px;
+	font-weight: 600;
+}
