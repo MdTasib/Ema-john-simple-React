@@ -2,6 +2,20 @@
 	display: grid;
 }
 
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.mr-auto {
+	margin: 0 auto;
+}
+
+.py-3 {
+	padding: 3rem 0;
+}
+
 .align-center {
 	align-items: center;
 }

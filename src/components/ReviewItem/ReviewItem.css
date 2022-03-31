@@ -1,0 +1,19 @@
+.item {
+	background: #eceff1;
+	width: 500px;
+	padding: 1rem;
+	border-radius: 5px;
+}
+
+.item-info {
+	margin-right: auto;
+	padding-left: 30px;
+}
+
+.item-info * {
+	margin: 0;
+}
+
+.item-info p {
+	font-size: 16px;
+}
