@@ -4,6 +4,7 @@ import deleteIcon from "../../images/delete.png";
 
 const ReviewItem = props => {
 	const { name, img, price, quantity, shipping } = props.product;
+	const { handleRemoveProduct, product } = props;
 
 	return (
 		<div className='flex item'>
@@ -16,7 +17,12 @@ const ReviewItem = props => {
 				<p>Quantity : {quantity}</p>
 				<p>Shipping : {shipping}</p>
 			</div>
-			<img width={40} src={deleteIcon} alt='' />
+			<img
+				width={40}
+				src={deleteIcon}
+				alt=''
+				onClick={() => handleRemoveProduct(product)}
+			/>
 		</div>
 	);
 };
