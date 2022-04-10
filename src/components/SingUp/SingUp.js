@@ -1,15 +1,13 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const SingUp = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [error, setError] = useState("");
-	const [createUserWithEmailAndPassword, user] =
-		useCreateUserWithEmailAndPassword(auth);
 	const navigate = useNavigate();
 
 	const handleEmail = event => {
@@ -27,16 +25,20 @@ const SingUp = () => {
 	const handleSubmit = event => {
 		event.preventDefault();
 		if (password !== confirmPassword) {
-			setError("You password did not match");
+			setError("Password did not match");
 			return;
 		}
+		createUserWithEmailAndPassword(auth, email, password)
+			.then(result => {
+				const user = result.user;
 
-		createUserWithEmailAndPassword(email, password);
+				if (user.uid) {
+					navigate("/shop");
+				}
+				console.log(user);
+			})
+			.catch(error => console.log(error.message));
 	};
-
-	if (user) {
-		navigate("/shop");
-	}
 
 	return (
 		<div className='login-form'>
@@ -68,6 +70,7 @@ const SingUp = () => {
 				<p>
 					Already have an account ? <Link to='/login'>login</Link>
 				</p>
+				<p>{error}</p>
 			</form>
 		</div>
 	);
