@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthUser } from "../../App";
 
 const Shipment = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [address, setAddress] = useState("");
 	const [phone, setPhone] = useState("");
+	const [user] = useContext(AuthUser);
 
 	const handleName = event => {
-		setName(event.target.name);
+		setName(event.target.value);
 	};
 
 	const handleEmail = event => {
-		setEmail(event.target.email);
+		setEmail(event.target.value);
 	};
 
 	const handleAddress = event => {
@@ -22,7 +24,11 @@ const Shipment = () => {
 		setPhone(event.target.value);
 	};
 
-	const handleSubmit = () => {};
+	const handleSubmit = event => {
+		event.preventDefault();
+		const shipping = { name, email, address, phone };
+		console.log(shipping);
+	};
 
 	return (
 		<div className='login-form'>
@@ -34,11 +40,18 @@ const Shipment = () => {
 				</div>
 				<div className='input-group'>
 					<label htmlFor='email'>Your Email</label>
-					<input onBlur={handleEmail} type='email' id='email' required />
+					<input
+						onBlur={handleEmail}
+						value={user?.email}
+						readOnly
+						type='email'
+						id='email'
+						required
+					/>
 				</div>
 				<div className='input-group'>
 					<label htmlFor='address'>Your Address</label>
-					<input onBlur={handlePhone} type='text' id='address' required />
+					<input onBlur={handleAddress} type='text' id='address' required />
 				</div>
 				<div className='input-group'>
 					<label htmlFor='phone'>Your Phone</label>
