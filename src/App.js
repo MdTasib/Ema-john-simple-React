@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import SingUp from "./components/SingUp/SingUp";
 import { createContext, useState } from "react";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
+import Shipment from "./components/Shipment/Shipment";
 
 export const AuthUser = createContext();
 
@@ -25,6 +26,14 @@ function App() {
 						element={
 							<RequireAuth>
 								<Inventory />
+							</RequireAuth>
+						}
+					/>
+					<Route
+						path='/shipment'
+						element={
+							<RequireAuth>
+								<Shipment />
 							</RequireAuth>
 						}
 					/>
