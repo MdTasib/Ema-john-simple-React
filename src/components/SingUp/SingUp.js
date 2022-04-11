@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthUser } from "../../App";
 import auth from "../../firebase.init";
 
@@ -11,6 +11,9 @@ const SingUp = () => {
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
 	const [user, setUser] = useContext(AuthUser);
+	const location = useLocation();
+
+	let from = location.state?.from?.pathname || "/";
 
 	const handleEmail = event => {
 		setEmail(event.target.value);
@@ -35,7 +38,7 @@ const SingUp = () => {
 				const user = result.user;
 				setUser(user);
 				if (user.uid) {
-					navigate("/shop");
+					navigate(from, { replace: true });
 				}
 			})
 			.catch(error => console.log(error.message));
