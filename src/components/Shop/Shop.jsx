@@ -15,11 +15,11 @@ const Shop = () => {
 
   useEffect(() => {
 		(async () => {
-			const res = await fetch(`http://localhost:5000/product?page=${page}&size${size}`);
+			const res = await fetch(`http://localhost:5000/product?page=${page}&size=${size}`);
 			const data = await res.json();
 			setProducts(data);
 		})();
-	}, []);
+	}, [page, size]);
 
   useEffect(() => {
     fetch('http://localhost:5000/productCount')
@@ -86,9 +86,9 @@ const Shop = () => {
                 key={index}>{number}</button>
               )
             }
-            <select onChange={e => setSize(e.target.value)}>
+            <select defaultValue={10} onChange={e => setSize(e.target.value)}>
               <option value="5">5</option>
-              <option value="10" selected>10</option>
+              <option value="10">10</option>
               <option value="15">15</option>
               <option value="20">20</option>
             </select>
