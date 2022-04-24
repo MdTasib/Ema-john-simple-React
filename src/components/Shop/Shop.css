@@ -7,3 +7,21 @@
 	background-color: #ffe0b3;
 	padding: 0px 20px;
 }
+
+.pagination {
+	text-align: center;
+}
+
+.pagination button {
+	padding: 10px 20px;
+	background: #ff9900;
+	color: white;
+	border: 2px solid #b16a00;
+	margin: 10px;
+	cursor: pointer;
+}
+
+.pagination .selected {
+	background: white;
+	color: #ff9900;
+}
